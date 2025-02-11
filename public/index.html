@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .hidden { display: none; }
+      .container { text-align: center; padding: 20px; }
+      .button-group { margin-top: 20px; }
+      button { margin: 5px; padding: 10px 15px; }
+    </style>
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <!-- Landing Page -->
+      <div id="landing-page" class="page">
+        <div class="container">
+          <h1>Welcome to Our Platform</h1>
+          <p>Discover a world of possibilities. Join us today to get started!</p>
+          <div class="button-group">
+            <button id="login-btn" onclick="navigateToLogin()">Login</button>
+            <button id="register-btn" onclick="navigateToRegister()">Register</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Login Page (Hidden by Default) -->
+      <div id="login-page" class="page hidden">
+        <div class="container">
+          <h2>Login</h2>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+          <button onclick="navigateToLanding()">Back</button>
+        </div>
+      </div>
+
+      <!-- Register Page (Hidden by Default) -->
+      <div id="register-page" class="page hidden">
+        <div class="container">
+          <h2>Register</h2>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" id="confirm-password" name="confirm-password" required />
+            </div>
+            <button type="submit">Register</button>
+          </form>
+          <button onclick="navigateToLanding()">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function navigateToLogin() {
+        document.getElementById("landing-page").classList.add("hidden");
+        document.getElementById("login-page").classList.remove("hidden");
+        document.getElementById("register-page").classList.add("hidden");
+      }
+
+      function navigateToRegister() {
+        document.getElementById("landing-page").classList.add("hidden");
+        document.getElementById("register-page").classList.remove("hidden");
+        document.getElementById("login-page").classList.add("hidden");
+      }
+
+      function navigateToLanding() {
+        document.getElementById("landing-page").classList.remove("hidden");
+        document.getElementById("login-page").classList.add("hidden");
+        document.getElementById("register-page").classList.add("hidden");
+      }
+
+      document.getElementById("login-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Login form submitted!");
+      });
+
+      document.getElementById("register-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Register form submitted!");
+      });
+    </script>
+  </body>
+</html>
